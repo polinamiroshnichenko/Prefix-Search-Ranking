@@ -7,12 +7,14 @@ def search(query, es_url="http://localhost:9200", index_name="products"):
                     {"multi_match": {
                         "query": query,
                         "fields": [
-                            "name^3",
+                            "name^4",
                             "name.ngram^2",
-                            "name.sasy^2",
-                            "brand^1.5",
-                            "category^1.5",
-                            "description"
+                            "name.sasy^3",
+                            "brand.ngram^2",
+                            "category.ngram^2",
+                            "keywords.ngram^4",
+                            "description^2",
+
                         ],
                         "type": "bool_prefix"
                     }}

@@ -46,11 +46,17 @@ mapping = {
                     "keyword": {"type": "keyword"}
                 }
             },
+            "keywords": {
+                "type": "text",
+                "fields": {
+                    "ngram": {"type": "text", "analyzer": "edge_ngram_analyzer"},
+                    "keyword": {"type": "keyword"}
+                }
+            },
             "description": {"type": "text"},
             "weight": {"type": "float"},
             "package_size": {"type": "long"},
             "price": {"type": "float"},
-            "keywords": {"type": "text"},
             "image_url": {"type": "text"}
         }
     }
