@@ -24,3 +24,23 @@ def search(query, es_url="http://localhost:9200", index_name="products"):
     }
     r = requests.post(f"{es_url}/{index_name}/_search", json=payload)
     return r.json()
+
+import requests
+
+def search_by_embedding(vector, es_url="http://localhost:9200", index_name="products", top_k=5):
+    payload = {
+        "size": top_k,
+        "query": {
+            "script_score": {
+                "query": {"match_all": {}},
+                "script": {
+                    "source": "cosineSimilarity(params.query_vector, 'embedding') + 1.0",
+                    "params": {"query_vector": vector}
+                }
+            }
+        }
+    }
+    r = requests.post(f"{es_url}/{index_name}/_search", json=payload)
+    return r.json()
+
+

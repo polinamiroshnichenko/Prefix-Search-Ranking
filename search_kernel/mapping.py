@@ -57,10 +57,13 @@ mapping = {
             "weight": {"type": "float"},
             "package_size": {"type": "long"},
             "price": {"type": "float"},
-            "image_url": {"type": "text"}
+            "image_url": {"type": "text"},
+            "embedding": {
+                "type": "dense_vector",
+                "dims": 1536}
+
         }
     }
 }
 
 resp = requests.put(f"{es_url}/{index_name}", json=mapping)
-

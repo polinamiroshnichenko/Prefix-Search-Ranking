@@ -3,7 +3,6 @@ def filter_results(results, query=None, threshold=0.2, top_k=5):
     if not hits:
         return []
 
-    # безопасно ищем максимальный score
     max_score = 0.0
     for h in hits:
         try:
@@ -26,10 +25,8 @@ def filter_results(results, query=None, threshold=0.2, top_k=5):
             continue
 
         if query_tokens:
-            # объединяем текст всех ключевых полей
             field_values = " ".join([h["_source"].get(f, "").lower()
                                      for f in ["name","brand","category","keywords"]])
-            # частичное совпадение хотя бы одного токена
             if not any(tok in field_values for tok in query_tokens):
                 continue
 
