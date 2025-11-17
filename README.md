@@ -1,4 +1,2 @@
 # Prefix-Search-Ranking
 
-Токен в pdf файле неактивный
-ce780dc39158c4041ac1526f9454d90d3c38ac3b6ba9c1e4da40917aaf0e55bc
