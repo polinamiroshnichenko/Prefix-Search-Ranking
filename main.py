@@ -20,3 +20,7 @@ def search_endpoint(req: SearchRequest):
 
     results = smart_search(req.query, threshold=req.threshold)
     return {"query": req.query, "top_results": results[:req.top_k]}
+
+
+
+ API_KEY = "sk-or-v1-"
